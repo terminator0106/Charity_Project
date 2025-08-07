@@ -29,7 +29,7 @@ if not SECRET_KEY:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'issue-reporter-uazm.onrender.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'charity-project-0epq.onrender.com']
 
 RAZORPAY_KEY_ID = 'rzp_test_ZNBcrwR3B5htxX'
 RAZORPAY_SECRET_KEY = '6VpzRf3aBtqU1qyrJCPhiARI'
