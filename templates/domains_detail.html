@@ -1,0 +1,239 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>{{ selected_domain.name|default:"Domain Details" }} - HopeHub</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/profile_dropdown.css' %}" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="nav-logo">
+    <img src="{% static 'images/logo.png' %}" alt="HopeHub Logo" />
+    <span>HopeHub</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li class="dropdown">
+      <a href="#">Domains ▼</a>
+      <ul class="dropdown-menu">
+        {% for domain in domains %}
+          <li><a href="?domain={{ domain.name|urlencode }}">{{ domain.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </li>
+      {% if user.is_authenticated %}
+      {% if user.is_superuser %}
+        <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+      {% else %}
+        <li><a href="{% url 'user_dashboard' %}">Dashboard</a></li>
+      {% endif %}
+        <li class="search-bar">
+          <input type="text" placeholder="Search...">
+        </li>
+        {% include 'profile_dropdown.html' %}
+      {% else %}
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li class="search-bar">
+          <input type="text" placeholder="Search...">
+        </li>
+      {% endif %}
+    </li>
+  </ul>
+</nav>
+
+<!-- Domain Info Section -->
+<section class="domain-info-section" style="background-color: #f9f9f9; padding: 50px 80px;">
+  <div class="domain-container" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+    
+    <!-- Text Content -->
+    <div class="domain-text" style="flex: 1; min-width: 300px;">
+      {% if selected_domain %}
+        <h1 style="font-size: 2.25rem; color: #333; margin-bottom: 25px;">{{ selected_domain.name }}</h1>
+        <p style="font-size: 1.25rem; color: #555; line-height: 1.8;">
+          {{ selected_domain.description }}
+        </p>
+      {% else %}
+        <h1 style="font-size: 2rem; color: #333;">Select a Domain</h1>
+        <p style="font-size: 1.1rem; color: #555;">Please choose a domain from the dropdown or home page to view details.</p>
+      {% endif %}
+    </div>
+
+    <!-- Image -->
+    {% if selected_domain and selected_domain.image %}
+      <div class="domain-image" style="flex: 1; min-width: 280px; text-align: center;">
+        <img src="{{ selected_domain.image }}" alt="{{ selected_domain.name }}" 
+             style="width: 100%;max-width: 500px; height: auto; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.15);">
+      </div>
+    {% endif %}
+
+  </div>
+</section>
+
+
+
+
+
+      <!-- Map Section -->
+      {% if selected_domain %}
+      <section class="map-container">
+        <h2>Charity Locations in {{ selected_domain.name }}</h2>
+        <div id="map" style="height: 400px; width: 100%; border-radius: 10px;"></div>
+      </section>
+      {% endif %}
+
+    <!-- Charity Locations Section -->
+    <section class="charity-locations">
+      <h2>Charity Clubs in {{ selected_domain.name }}</h2>
+      <div class="charity-cards">
+        {% for charity in charities %}
+        <div class="charity-card">
+          <div class="charity-left">
+            <h3 class="charity-name">{{ charity.name|title }}</h3>
+            <p class="charity-location">{{ charity.location }}</p>
+          </div>
+          <div class="charity-center">
+            <p class="charity-contact">{{ charity.contact }}</p>
+          </div>
+          <div class="charity-right">
+            <p class="charity-email">{{ charity.email }}</p>
+          </div>
+        </div>
+        {% empty %}
+          <p>No charities found for this domain.</p>
+        {% endfor %}
+      </div>
+    </section>
+
+
+
+<!-- Testimonials -->
+<section class="testimonial-section">
+  <h2>What People Say About HopeHub</h2>
+  <div class="testimonial-container">
+    <div class="testimonial-slider">
+      <div class="testimonial">"HopeHub helped me get food when I had nothing!" - Ramesh, Mumbai</div>
+      <div class="testimonial">"The best place to find charities that make a real impact!" - Aarti, Delhi</div>
+      <div class="testimonial">"I donated ₹10,000 and tracked where it was used!" - Vikram, Bangalore</div>
+      <div class="testimonial">"Their transparency makes donating so much easier!" - Neha, Chennai</div>
+      <div class="testimonial">"Volunteer opportunities here changed my life!" - Raj, Hyderabad</div>
+    </div>
+  </div>
+</section>
+
+  <!-- Posts Section -->
+    <section class="posts">
+      <h2>Popular & Unappreciated Charity Stories</h2>
+      <div class="post-grid" id="post-grid">
+        {% for post in posts %}
+        <div class="post-card">
+          <!-- Display image from post.image -->
+          {% if post.image %}
+            <img src="{{ post.image }}" alt="{{ post.title }}" style="width:100%; height:auto; border-radius: 8px;" />
+          {% endif %}
+          
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.content|truncatewords:25 }}</p>
+          <p><strong>Posted on:</strong> {{ post.created_date|date:"F j, Y" }}</p>
+          
+          {% if post.url %}
+            <a href="{{ post.url }}" target="_blank" class="btn btn-info">Read More →</a>
+          {% else %}
+            <p style="color: #888;">No external link available.</p>
+          {% endif %}
+        </div>
+        {% empty %}
+          <p>No posts available for this domain.</p>
+        {% endfor %}
+      </div>
+    </section>
+
+
+
+
+<!-- Footer -->
+<footer>
+  <div class="footer-container">
+    <div class="footer-logo">
+      <img src="{% static 'images/logo.png' %}" alt="HopeHub Logo">
+      <span>HopeHub</span>
+    </div>
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="{% url 'about' %}">About Us</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms & Conditions</a></li>
+        <li><a href="#">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-social">
+      <h4>Follow Us</h4>
+      <ul>
+        <li><a href="https://facebook.com"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+        <li><a href="https://twitter.com"><i class="fab fa-twitter"></i> Twitter</a></li>
+        <li><a href="https://instagram.com"><i class="fab fa-instagram"></i> Instagram</a></li>
+        <li><a href="https://linkedin.com"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="footer-newsletter">
+      <h4>Subscribe to Our Newsletter</h4>
+      <form action="#" method="POST">
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 HopeHub. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script>
+  function initMap() {
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 5,
+      center: { lat: 22.9734, lng: 78.6569 }, // Centered on India
+    });
+
+    const markers = [
+      {% for charity in charities %}
+        {
+          lat: {{ charity.latitude }},
+          lng: {{ charity.longitude }},
+          name: "{{ charity.name|escapejs }}"
+        },
+      {% endfor %}
+    ];
+
+    markers.forEach(marker => {
+      new google.maps.Marker({
+        position: { lat: marker.lat, lng: marker.lng },
+        map: map,
+        title: marker.name
+      });
+    });
+  }
+</script>
+<script src="{% static 'js/map.js' %}"></script>
+<script src="{% static 'js/domains_dynamic.js' %}"></script>
+<script src="{% static 'js/profile.js' %}"></script>
+<script>
+  // Make the charity data available to your map.js script
+  const charityData = JSON.parse('{{ charity_locations_json|safe }}');
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyClt6uvVZPlE5bNdWy6YbuNiL-uxpADsVM&callback=initMap" async defer></script>
+<script src="{% static 'js/charity_map.js' %}"></script>
+
+</body>
+</html>

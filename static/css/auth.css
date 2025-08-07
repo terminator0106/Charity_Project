@@ -1,0 +1,76 @@
+/* auth.css */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f2f6fa;
+}
+
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 80px);
+    padding: 2rem;
+}
+
+.auth-box {
+    background-color: white;
+    padding: 2rem 3rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 450px;
+}
+
+.auth-box h2 {
+    text-align: center;
+    color: #2C3E50;
+    margin-bottom: 20px;
+}
+
+.auth-box form p {
+    margin-bottom: 1rem;
+}
+
+.auth-box input[type="text"],
+.auth-box input[type="email"],
+.auth-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+.auth-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #2AB7CA;
+    color: white;
+    border: none;
+    font-size: 16px;
+    margin-top: 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.auth-box button:hover {
+    background-color: #2195a8;
+}
+
+.auth-box p {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 15px;
+}
+
+.auth-box a {
+    color: #2AB7CA;
+    text-decoration: none;
+}
+
+.auth-box a:hover {
+    text-decoration: underline;
+}

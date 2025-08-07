@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard - HopeHub</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/profile_dropdown.css' %}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-logo">
+            <img src="{% static 'images/logo.png' %}" alt="HopeHub Logo">
+            <span>HopeHub</span>
+        </div>
+        <div class="nav-right">
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'about' %}">About</a></li>
+
+                {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                {% else %}
+                <li><a href="{% url 'user_dashboard' %}">Dashboard</a></li>
+                {% endif %}
+                <li class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </li>
+                {% include 'profile_dropdown.html' %}
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+
+    <div id="profile-section" class="hidden">
+        <h2>Your Profile</h2>
+        <p><strong>Name:</strong> Saachi Pandey</p>
+        <p><strong>Email:</strong> saachipandey258@gmail.com</p>
+        <p><strong>Member Since:</strong> January 2025</p>
+    </div>
+
+    <!-- Dashboard Section -->
+   
+
+    <div class="dashboard">
+        <h1 class="welcome-message">Welcome Back, <span id="username">{{ request.user.first_name|default:request.user.username|title }}</span>! 👋</h1>
+
+        <p>Here’s a summary of your activity:</p>
+
+<!-- Personal Stats Section -->
+<div class="stats">
+    <div class="stat-item">
+        <h2>₹{{ total_donated }}</h2>
+        <p>Total Donated</p>
+    </div>
+    <div class="stat-item">
+        <h2>{{ total_donations }}</h2>
+        <p>Total Donations</p>
+    </div>
+    <div class="stat-item">
+        <h2>₹{{ average_donation }}</h2>
+        <p>Average Donation</p>
+    </div>
+</div>
+
+<!-- Recent Donations Section -->
+<div class="recent-donations">
+    <h2>Your Recent Donations</h2>
+
+    {% if donations %}
+        <table class="donation-table">
+            <thead>
+                <tr>
+                    <th>Charity</th>
+                    <th>Domain</th>
+                    <th>Amount (₹)</th>
+                    <th>Status</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for donation in donations %}
+                <tr>
+                    <td>{{ donation.charity.name|title }}</td>
+                    <td>{{ donation.domain }}</td>
+                    <td>{{ donation.amount }}</td>
+                    <td>{{ donation.get_status_display }}</td>
+                    <td>{{ donation.date|date:"M d, Y H:i" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>You haven’t made any donations yet. Start making a difference today!</p>
+    {% endif %}
+</div>
+
+<!-- Donation Milestones -->
+<div class="milestones">
+    <h2>Donation Milestones</h2>
+    <div class="milestone">
+        <p><strong>₹{{ milestone_goal }} Goal</strong></p>
+        <div class="progress-bar">
+            <div class="progress" style="width: {{ milestone_progress|floatformat:0 }}%;"></div>
+        </div>
+        <p>{{ milestone_progress }}% Completed</p>
+    </div>
+</div>
+
+
+
+        <!-- Make a Donation Section -->
+            <div class="make-donation-section">
+                <h2>Make a Donation</h2>
+                <form id="donationForm" method="post">
+                    {% csrf_token %}
+                    <label>Select Domain:</label>
+                    <select id="domainSelect">
+                        <option value="">-- Select --</option>
+                        {% for domain in domains %}
+                            <option value="{{ domain.id }}">{{ domain.name }}</option>
+                        {% endfor %}
+                    </select>
+                
+                    <div id="charityList" class="hidden">
+                        <div id="charityCheckboxes"></div>
+                    </div>
+                
+                    <div id="amountSection" class="hidden">
+                        <label>Amount:</label>
+                        <input type="number" id="donationAmountInput" min="1" required />
+                    </div>
+                
+                    <div id="utilizationSummary" class="hidden">
+                        <ul id="utilizationList"></ul>
+                    </div>
+                
+                    <div id="paymentSection" class="hidden">
+                        <label>Select Payment Method:</label>
+                        <select id="paymentMethod">
+                            <option value="razorpay">Razorpay</option>
+                        </select>
+                        <div id="paymentDetails"></div>
+                    </div>
+                
+                    <button type="submit" id="submitDonationBtn" class="hidden">Donate</button>
+                </form>
+
+                <!-- Show Payment Status -->
+                <div id="paymentStatus"></div>
+            </div>
+
+        <script>
+            const RAZORPAY_KEY_ID = "{{ RAZORPAY_KEY_ID }}";
+        </script>        
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script src="{% static 'js/donation_impact.js' %}"></script>
+        <script src="{% static 'js/profile.js' %}"></script>
+        <script src="{% static 'js/donations.js' %}"></script>
+
+
+    </div>
+
+</body>
+
+</html>

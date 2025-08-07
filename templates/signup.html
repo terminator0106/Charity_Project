@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - HopeHub</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile_dropdown.css' %}">
+    <link rel="stylesheet" href="{% static 'css/auth.css' %}">  <!-- ✅ New file -->
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="nav-logo">
+            <img src="{% static 'images/logo.png' %}" alt="HopeHub Logo">
+            <span>HopeHub</span>
+        </div>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+
+            {% if user.is_authenticated %}
+                <li><a href="{% url 'user_dashboard' %}">Dashboard</a></li>
+                {% include 'profile_dropdown.html' %}
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    <!-- Sign Up Container -->
+    <div class="auth-container">
+        <div class="auth-box">
+            <h2>Create Your Account</h2>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{% load static %}
+<li class="dropdown" style="position: relative;">
+    <a href="#" class="dropdown-toggle" onclick="toggleDropdown(event)" style="display: flex; align-items: center; padding: 0 10px;">
+        <img src="{% static 'images/profile-icon.png' %}" alt="Profile">
+    </a>
+    <ul id="profile-dropdown" class="profile-dropdown" style="display: none;">
+        
+        <li>
+            <form method="POST" action="{% url 'logout' %}" style="margin: 0; padding: 0;">
+                {% csrf_token %}
+                <button type="submit" class="dropdown-logout-btn">Logout</button>
+            </form>
+        </li>
+        <li>
+            <form method="POST" action="{% url 'delete_account' %}" style="margin: 0; padding: 0;">
+                {% csrf_token %}
+                <button type="submit" class="dropdown-logout-btn">Delete Account</button>
+            </form>
+        </li>
+    </ul>
+    
+    
+    
+    
+</li>
+
+<script>
+    function toggleDropdown(e) {
+        e.preventDefault();
+        var menu = document.getElementById('profile-dropdown');
+        menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'block' : 'none';
+    }
+
+    document.addEventListener('click', function(event) {
+        var dropdown = document.getElementById('profile-dropdown');
+        if (dropdown && !event.target.closest('.dropdown')) {
+            dropdown.style.display = 'none';
+        }
+    });
+  
+
+</script>

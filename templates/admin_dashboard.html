@@ -1,0 +1,239 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'css/profile_dropdown.css' %}">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-logo">
+      <img src="{% static 'images/logo.png' %}" alt="HopeHub Logo">
+      <span>HopeHub</span>
+    </div>
+    <ul>
+      <li><a href="{% url 'home' %}">Home</a></li>
+  
+      {% if user.is_authenticated and user.is_superuser %}
+        <li><a href="#" id="manageDomainsBtn">Manage Domains</a></li>
+        <li><a href="#" id="manageCharitiesBtn">Manage Charities</a></li>
+        <li><a href="#" id="managePostsBtn">Manage Posts</a></li>
+        <li><a href="#" id="manageUsersBtn">Manage Users</a></li>
+        <li>
+          {% if user.is_authenticated %}
+          {% include 'profile_dropdown.html' %}
+          {% endif %}
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+  
+
+  <!-- Manage Domains Section -->
+  <div class="manage-section hidden" id="manageDomainsSection">
+    <button class="close-btn">&times;</button>
+    <h2>Manage Domains</h2>
+    <div class="domain-actions">
+      <input type="text" id="searchDomain" placeholder="Search domains..." class="search-input">
+      <button id="addDomainBtn" class="add-domain-btn">➕ Add Domain</button>
+    </div>
+    <table class="manage-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Domain Name</th>
+          <th>Description</th>
+          <th>Created On</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="domainTableBody">
+        {% for domain in domains %}
+          <tr>
+            <td>{{ domain.id }}</td>
+            <td>{{ domain.name }}</td>
+            <td>{{ domain.description|truncatewords:15 }}</td>
+            <td>{{ domain.created_on|date:"F d, Y" }}</td>
+            <td>
+              <button class="edit-btn" data-id="{{ domain.id }}">Edit</button>
+              <button class="delete-btn" data-id="{{ domain.id }}">Delete</button>
+            </td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="5">No domains found.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Manage Charities Section -->
+  <div class="manage-section hidden" id="manageCharitiesSection">
+    <button class="close-btn">&times;</button>
+    <div class="charity-actions">
+      <input type="text" id="searchCharity" placeholder="Search charities..." class="search-input">
+      <button id="addCharityBtn" class="add-charity-btn">➕ Add Charity</button>
+    </div>
+    <table class="manage-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Domain</th>
+          <th>Contact</th>
+          <th>Email</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody id="charityTableBody">
+        {% for charity in charities %}
+          <tr>
+            <td>{{ charity.id }}</td>
+            <td>{{ charity.name }}</td>
+            <td>{{ charity.domain.name }}</td>
+            <td>{{ charity.contact }}</td>
+            <td>{{ charity.email }}</td>
+            <td>
+              <button class="edit-btn" data-id="{{ charity.id }}">Edit</button>
+              <button class="delete-btn" data-id="{{ charity.id }}">Delete</button>
+            </td>
+          </tr>
+        {% empty %}
+          <tr><td colspan="6">No charities found.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+
+
+  <!-- Admin Dashboard Overview -->
+  <div class="admin-dashboard">
+    <h1>Admin Dashboard Overview</h1>
+
+    <!-- User Table -->
+    <div id="userTableContainer" class="manage-section hidden hidden">
+      <button class="close-btn">&times;</button>
+      <h2>Manage Users</h2>
+      <div class="user-actions">
+        <input type="text" id="searchUser" placeholder="Search users..." class="search-input">
+        <button id="addUserBtn" class="add-user-btn">➕ Add User</button>
+      </div>
+      <table class="manage-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Contact</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="userTableBody">
+          {% for user in users %}
+            <tr>
+              <td>{{ user.id }}</td>
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.contact_number }}</td>
+              <td>
+                <button class="edit-btn" data-id="{{ user.id }}">Edit</button>
+                <button class="delete-btn" data-id="{{ user.id }}">Delete</button>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="5">No users found.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Manage Posts Section -->
+    <div class="manage-section hidden" id="managePostsSection">
+      <button class="close-btn">&times;</button>
+      <h2>Manage Posts</h2>
+      <div class="post-actions">
+        <input type="text" id="searchPost" placeholder="Search posts..." class="search-input">
+        <button id="addPostBtn" class="add-post-btn">➕ Add Post</button>
+      </div>
+      <table class="manage-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Domain</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="postTableBody">
+          {% for post in posts %}
+            <tr>
+              <td>{{ post.id }}</td>
+              <td>{{ post.title }}</td>
+              <td>{{ post.domain.name }}</td>
+              <td>{{ post.content|truncatewords:15 }}</td>
+              <td>
+                <button class="edit-btn" data-id="{{ post.id }}">Edit</button>
+                <button class="delete-btn" data-id="{{ post.id }}">Delete</button>
+              </td>
+            </tr>
+          {% empty %}
+            <tr><td colspan="5">No posts found.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Edit Form -->
+    <div id="editForm" class="edit-form hidden">
+      <h2>Edit User</h2>
+      <input type="hidden" id="editUserId">
+      <label for="editUserName">Name:</label>
+      <input type="text" id="editUserName">
+      <label for="editUserEmail">Email:</label>
+      <input type="email" id="editUserEmail">
+      <label for="editUserRole">Role:</label>
+      <select id="editUserRole">
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
+      </select>
+      <button onclick="saveEdit()">Save</button>
+      <button onclick="closeEditForm()">Cancel</button>
+    </div>
+
+    <!-- Recent Activities -->
+    <div class="recent-activities">
+      <h2>Recent Activities</h2>
+      <ul>
+        <li>John Doe donated ₹5,000 to XYZ Charity <span>2 hours ago</span></li>
+        <li>New user registered: Jane Smith <span>5 hours ago</span></li>
+        <li>Campaign "Save the Rainforest" reached 80% of its goal <span>1 day ago</span></li>
+      </ul>
+    </div>
+
+    <!-- Announcements -->
+    <div class="announcements">
+      <h2>Announcements</h2>
+      <div class="announcement-box">
+        <p><strong>System Maintenance:</strong> Our platform will be down for maintenance on April 5, from 12 AM - 3 AM.</p>
+      </div>
+      <div class="announcement-box">
+        <p><strong>New Feature:</strong> We have introduced a donor leaderboard! Check it out in the donations section.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{% static 'js/admin_users.js' %}"></script>
+  <script src="{% static 'js/admin_posts.js' %}"></script>
+  <script src="{% static 'js/admin_sections.js' %}"></script>
+  <script src="{% static 'js/admin_deletetion.js' %}"></script>
+  <script src="{% static 'js/profile.js' %}"></script>
+
+</body>
+</html>

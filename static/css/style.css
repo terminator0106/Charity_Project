@@ -1,0 +1,1822 @@
+/* style.css */
+
+/* General Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Navbar Styling */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background-color: #2AB7CA;
+    color: white;
+}
+
+/* Logo + Title Wrapper */
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between logo and text */
+}
+
+nav img {
+    height: 60px; /* Adjust size as needed */
+    width: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    clip-path: inset(5%); /* Crop out excess white padding */
+}
+
+/* HopeHub Text */
+.nav-logo span {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Nav Links */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+nav ul li a:hover {
+    background-color: #2AB7CA;
+}
+
+
+/* Dropdown Styling */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    z-index: 1;
+    border-radius: 4px;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 10px 20px;
+    display: block;
+    transition: background 0.3s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Search Bar Styling */
+.search-bar input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Hero Section Styling */
+.hero img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-bottom: 4px solid #2AB7CA;
+}
+
+.popular-posts .card {
+    width: 100%; /* Ensures cards fit within the column */
+    height: 320px; /* Adjust the height to make it more square */
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px; /* Optional: Rounded corners */
+    overflow: hidden; /* Prevents image overflow */
+}
+
+.popular-posts .card img {
+    height: 60%; /* Image takes up the top 60% */
+    width: 100%; /* Full width */
+    object-fit: cover; /* Ensures no stretching */
+}
+
+.popular-posts .card-body {
+    height: 40%; /* Bottom section takes up 40% */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Evenly distribute content */
+    padding: 10px;
+    margin: 0px;
+}
+
+.container.popular-posts{
+    /*margin: 10px;*/
+    width: 100%;
+}
+
+.popular-posts .card-title {
+    font-size: 14px; /* Adjusts title size */
+    font-weight: bold;
+    text-align: center;
+}
+
+.popular-posts .card-text {
+    font-size: 12px; /* Smaller font for readability */
+    flex-grow: 1; /* Ensures text takes up remaining space */
+    text-align: center;
+}
+
+.popular-posts .btn {
+    width: 100%; /* Ensures button is full width */
+    font-size: 14px;
+    padding: 5px;
+    text-align: center;
+}
+
+
+/* Footer Styling */
+footer {
+    background-color: #2AB7CA;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* About Page Styling */
+.main-content {
+    padding: 20px;
+}
+
+.main-content h1 {
+    font-size: 32px;
+    color: #2AB7CA;
+    font-weight: bold;
+}
+
+.main-content p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+}
+.hero-content {
+    background: rgba(0, 0, 0, 0.5);  /* Semi-transparent dark background */
+    color: white;
+    padding: 20px;
+}
+/* Centering the image in the Hero Section */
+.row img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Login Page Styling */
+.login-container {
+    padding: 20px;
+    max-width: 400px;
+    margin: 40px auto;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+.login-container h1 {
+    font-size: 24px;
+    color: #2AB7CA;
+    text-align: center;
+}
+
+form input[type="text"],
+form input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+form button {
+    background-color: #2AB7CA;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+form button:hover {
+    background-color: #2AB7CA;
+}
+
+form p {
+    text-align: center;
+}
+
+form a {
+    color: #2AB7CA;
+    text-decoration: none;
+}
+
+form a:hover {
+    text-decoration: underline;
+}
+
+/* Dashboard Styling */
+.dashboard {
+    padding: 20px;
+}
+
+.dashboard h1 {
+    font-size: 28px;
+    color: #2AB7CA;
+}
+
+.dashboard-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.d-block.w-100{
+    height: 600px !important;
+}
+
+.custom-btn {
+    width: 260px;
+    height: 260px;
+    border-radius: 15px;
+    background-color: #f8f9fa; /* Light grayish white */
+    color: #333; /* Dark text */
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px; /* Spacing around buttons */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease-in-out;
+    border: 1px solid #ddd;
+
+}
+.custom-btn:hover {
+    background-color: #e9ecef;
+    transform: scale(1.05);
+    text-decoration-color: #333;
+}
+
+a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Use the same color as parent */
+}
+
+a:hover {
+    color: black !important; /* Change text color on hover */
+}
+
+.btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+}
+
+.featurette-divider.row-featurette{
+    padding: 10px;
+}
+
+.featurette-container{
+    padding: 20px;
+}
+#chart-container {
+    width: 100%;
+    height: 300px;
+}
+
+#donationChart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.hidden {
+    display: none;
+}
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.logout {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.logout:hover {
+    background-color: #e60000;
+}
+
+.delete-account {
+    background-color: #ff4d4d;
+    color: white;
+    margin-left: 10px;
+}
+
+.delete-account:hover {
+    background-color: #e60000;
+}
+/* Milestones Section */
+.milestones {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative; /* For dynamic animations */
+    overflow: hidden; /* Prevent overflow during animations */
+}
+
+.milestones h2 {
+    font-size: 24px;
+    color: #2AB7CA;
+    margin-bottom: 15px;
+    text-align: center;
+    animation: fadeIn 1s ease-in-out; /* Fade-in animation for heading */
+}
+
+.milestone {
+    margin-bottom: 20px;
+    position: relative; /* For hover effects */
+}
+
+.milestone p {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 25px;
+}
+
+.progress {
+    height: 100%;
+    background-color: #2AB7CA;
+    width: 50%; /* Example progress */
+    transition: width 0.5s ease-in-out, background-color 0.3s ease; /* Smooth transitions */
+}
+
+.progress:hover {
+    background-color: #1a8ca1; /* Darker shade on hover */
+}
+
+.progress-bar:hover .progress {
+    width: 60%; /* Increase width slightly on hover for visual feedback */
+}
+
+/* Summary Section (Stats) */
+.stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-item {
+    text-align: center;
+    flex-basis: calc(33.33% - 20px);
+    margin: 10px;
+}
+
+.stat-item h2 {
+    font-size: 28px;
+    color: #2AB7CA;
+}
+
+.stat-item p {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Hover effect for stats */
+.stat-item:hover {
+    transform: scale(1.05); /* Slight zoom effect on hover */
+    transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+/* Keyframes for fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design for Milestones and Stats */
+@media (max-width: 768px) {
+    .stats {
+        flex-direction: column; /* Stack stats vertically on smaller screens */
+        align-items: stretch;
+        padding-top :10 px}
+}
+
+
+.donation-item img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+/* Admin Dashboard Styling */
+.admin-dashboard {
+    padding: 30px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.admin-dashboard h1 {
+    font-size: 32px;
+    color: #2AB7CA;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Admin Panel Container */
+.admin-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+/* Admin Statistics Cards */
+.admin-card {
+    flex: 1;
+    min-width: 250px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.admin-card h3 {
+    color: #2AB7CA;
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.admin-card p {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.admin-card:hover {
+    transform: scale(1.05);
+}
+
+/* Admin Dashboard Buttons */
+.admin-buttons {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.admin-btn {
+    padding: 12px 20px;
+    background-color: #2AB7CA;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+.admin-btn:hover {
+    background-color: #2399b3;
+}
+
+/* Admin Table Styling */
+.admin-table-container {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.admin-table th, .admin-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.admin-table th {
+    background-color: #2AB7CA;
+    color: white;
+}
+
+.admin-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Logout & Delete Buttons */
+.admin-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.admin-actions .logout, 
+.admin-actions .delete-account {
+    font-size: 18px;
+    padding: 12px 20px;
+}
+
+.dashboard-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.card {
+    background: white;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    width: 200px;
+}
+
+.card h3 {
+    color: #2AB7CA;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #2AB7CA;
+    color: white;
+}
+
+.edit-btn, .delete-btn {
+    padding: 5px 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.edit-btn {
+    background-color: #ffcc00;
+}
+
+.delete-btn {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #e60000;
+}
+/* Edit Form Styling */
+.edit-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+.admin-btn {
+    padding: 8px 12px;
+    margin: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.edit {
+    background-color: #2AB7CA;
+    color: white;
+}
+
+.delete {
+    background-color: red;
+    color: white;
+}
+/* Announcements Section */
+.announcements {
+    background: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.announcements h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.announcement-box {
+    background: white;
+    border-left: 5px solid #007bff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+}
+
+.announcement-box strong {
+    color: #007bff;
+}
+
+/* Recent Activities */
+.recent-activities {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.recent-activities h2 {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+}
+
+.recent-activities ul {
+    list-style: none;
+    padding: 0;
+}
+
+.recent-activities ul li {
+    background: #f4f4f4;
+    padding: 12px;
+    margin-bottom: 8px;
+    border-left: 5px solid #007bff;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recent-activities ul li span {
+    font-size: 12px;
+    color: #666;
+}
+.hidden {
+    display: none;
+}
+/* Nav Links */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    position: relative;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    overflow: hidden;
+}
+
+/* Hover Effect */
+nav ul li a:hover {
+    background-color: #2AB7CA;
+    transform: scale(1.1); /* Slightly enlarges */
+    box-shadow: 0 4px 10px rgba(42, 183, 202, 0.5);
+}
+
+/* Extra Hover Animation: Underline Swipe */
+nav ul li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Show Underline on Hover */
+nav ul li a:hover::after {
+    transform: scaleX(1);
+}
+/* Manage Posts */
+.manage-posts {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.add-post-btn {
+    background-color: #2AB7CA;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.add-post-btn:hover {
+    background-color: #1D9BA8;
+    transform: scale(1.05);
+}
+.hidden {
+    display: none;
+}
+.close-btn {
+    background: #ff4d4d; /* Bright Red */
+    color: white;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 8px 12px;
+    cursor: pointer;
+    float: right;
+    margin: 10px;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 20px;
+    transition: 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+    background: #cc0000; /* Darker Red */
+    transform: scale(1.2); /* Slight Zoom Effect */
+    box-shadow: 0 0 10px rgba(255, 77, 77, 0.8);
+}
+.manage-users {
+    margin-top: 20px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.search-input {
+    padding: 10px;
+    width: 70%;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-user-btn {
+    background-color: #2AB7CA;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.add-user-btn:hover {
+    background-color: #1D9BA8;
+    transform: scale(1.05);
+}
+.hidden {
+    display: none;
+}
+
+.manage-section {
+    padding: 20px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    margin: 20px 0;
+}
+/* Navbar Styling */
+.navbar {
+    background-color: #2AB7CA;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px; /* Ensure consistent font size */
+}
+
+/* Logo */
+.logo a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Navigation Links */
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    position: relative; /* Needed for dropdown positioning */
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px; /* Ensure consistency */
+    padding: 10px;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    list-style: none;
+    padding: 0;  /* Removed extra padding */
+    margin: 0;
+    top: 100%; /* Dropdown appears below the "Domains" link */
+    left: 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    min-width: 160px; /* Ensure enough space */
+    z-index: 1000; /* Prevent overlap issues */
+}
+
+/* Ensure dropdown items match the navbar font size */
+.dropdown-menu li {
+    padding: 0;
+}
+
+.dropdown-menu a {
+    color: black;
+    display: block;
+    padding: 10px 15px; /* Proper padding */
+    font-size: 16px; /* Consistent font size */
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.dropdown-menu a:hover {
+    background-color: #f0f0f0;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    align-items: center;
+}
+
+
+#search-box {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+#search-btn {
+    background: white;
+    border: none;
+    cursor: pointer;
+    margin-left: 5px;
+}
+/* Map Section */
+.map-container {
+    position: relative;
+    text-align: center;
+    padding: 50px 10%;
+    background: url('./images/map_background.jpg') no-repeat center center/cover;
+    color: black;
+}
+
+.map-container h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+#map {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Sections */
+section {
+    padding: 40px 10%;
+    text-align: center;
+}
+
+/* Charity Locations List */
+.charity-locations {
+    background: #fff;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 10px auto;
+    max-width: 100%;
+}
+
+.charity-locations h2 {
+    color: #007BFF; /* Brighter Blue */
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+#charity-list {
+    list-style: none;
+    padding: 0;
+}
+
+#charity-list li {
+    background: #eef7ff;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #007BFF;
+    transition: 0.3s;
+}
+
+#charity-list li:hover {
+    background: #cce5ff;
+}
+
+/* Posts Section */
+.posts {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.posts h2 {
+    font-size: 26px;
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+.post-grid {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.post-card {
+    background: #f9f9f9;
+    padding: 20px;
+    width: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease-in-out;
+}
+
+.post-card:hover {
+    transform: translateY(-5px);
+}
+
+.post-card h3 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.post-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+.post-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #2AB7CA;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post-card a:hover {
+    text-decoration: underline;
+}
+
+/* Charity List Section */
+.charity-list {
+    background: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.charity-list h2 {
+    color: #2AB7CA;
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+.charity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    padding-top: 20px;
+}
+
+/* Charity Cards */
+.charity-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.charity-card img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.charity-card h3 {
+    font-size: 20px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.charity-card p {
+    font-size: 16px;
+    color: #555;
+}
+
+
+.charity-card:hover {
+    transform: translateY(-5px);
+}
+
+.charity-card img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.charity-card h3 {
+    font-size: 22px;
+    margin-top: 10px;
+    color: #333;
+}
+
+.charity-card p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.4;
+}
+
+.charity-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #2AB7CA;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.charity-card a:hover {
+    text-decoration: underline;
+}
+
+
+/* Footer Styling */
+footer {
+    background-color: #2AB7CA; /* Updated background color */
+    color: #fff;
+    padding: 30px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.footer-logo {
+    display: flex;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 40px;
+    margin-right: 10px;
+}
+
+.footer-logo span {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.footer-links h4, .footer-social h4, .footer-newsletter h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.footer-links ul, .footer-social ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li, .footer-social ul li {
+    margin-bottom: 8px;
+}
+
+.footer-links ul li a, .footer-social ul li a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+.footer-links ul li a:hover, .footer-social ul li a:hover {
+    color: #f39c12;
+}
+
+.footer-newsletter form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-newsletter input {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    width: 70%;
+    margin-right: 10px;
+}
+
+.footer-newsletter button {
+    padding: 8px 16px;
+    background-color: #f39c12;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.footer-newsletter button:hover {
+    background-color: #e67e22;
+}
+
+/* Social Media Links Styling */
+.footer-social ul {
+    display: block; /* Change to block to place each link below the other */
+    gap: 10px; /* Added gap between each social link */
+    text-align: center; /* Center align the social media links */
+}
+
+.footer-social ul li a {
+    font-size: 20px; /* Reduced font size */
+    display: block; /* Ensures each link is on its own line */
+    transition: transform 0.3s ease;
+    margin-bottom: 8px; /* Add space between each social media link */
+}
+
+.footer-social ul li a:hover {
+    transform: scale(1.2);
+}
+
+.footer-social ul li a i {
+    margin-right: 8px; /* Adds a small gap between the icon and the text */
+}
+
+/* Footer Bottom Styling */
+.footer-bottom {
+    background-color: #2AB7CA;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-logo {
+        margin-bottom: 20px;
+    }
+
+    .footer-links, .footer-social, .footer-newsletter {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .footer-newsletter form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-newsletter input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+.charity-impact {
+    background-color: #2AB7CA;
+    color: white;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.charity-impact h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+#charity-progress {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.metric {
+    background: rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    border-radius: 10px;
+    width: 250px;
+    text-align: center;
+}
+
+.amount {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.progress {
+    height: 100%;
+    width: 75%;
+    background: linear-gradient(to right, #ffffff, #e0f7fa);
+    transition: width 1s ease-in-out;
+}
+.testimonial-section {
+    text-align: center;
+    background: #2AB7CA; /* Keeping color consistent */
+    color: white;
+    padding: 40px 20px;
+}
+
+.testimonial-container {
+    width: 90%;
+    max-width: 90%;
+    overflow: hidden;
+    margin: auto;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    background: white;
+    color: black;
+    padding: 20px;
+}
+
+.testimonial-slider {
+    display: flex;
+    gap: 50px;
+    animation: slide 30s linear infinite;
+    white-space: nowrap;
+}
+
+.testimonial {
+    font-size: 18px;
+    font-weight: 500;
+    min-width: 100%;
+    text-align: center;
+    padding: 20px;
+    opacity: 0.9;
+    transition: opacity 0.5s ease-in-out;
+}
+
+@keyframes slide {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-500%); }
+}
+.donation-calculator {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.donation-calculator h2 {
+    color: #2AB7CA;
+}
+
+.donation-calculator label {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin: 10px 0;
+}
+
+.donation-calculator input {
+    width: 80%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.donation-calculator button {
+    background-color: #2AB7CA;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.donation-calculator button:hover {
+    background-color: #2193a6;
+}
+
+.impact-result {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+}
+
+.domains-buttons{
+    padding: 20px;
+}
+.charity-locations {
+    padding: 2rem;
+}
+  
+.charity-locations h2 {
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #007c91;
+    text-align: center;
+}
+  
+.charity-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+}
+
+.charity-left,
+.charity-center,
+.charity-right {
+    flex: 1;
+    min-width: 200px;
+}
+
+.charity-left {
+    text-align: left;
+}
+
+.charity-center {
+    text-align: center;
+}
+
+.charity-right {
+    text-align: right;
+}
+
+.charity-name {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.charity-location {
+    margin-top: 5px;
+    color: gray;
+    font-size: 0.95em;
+}
+
+.charity-email,
+.charity-contact {
+    font-size: 0.95em;
+    color: #555;
+}
+
+/* Donation Section Styling */
+.make-donation-section {
+    margin-top: 20px;
+    background: #f7f7f7;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.make-donation-section h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+.make-donation-section label {
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 5px;
+}
+
+/* Donation Section Container */
+.make-donation-section {
+    margin-top: 10px;
+    background: #f9f9f9;
+    padding: 3%;
+    border-radius: 12px;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.make-donation-section h2 {
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: #2c3e50;
+}
+
+.make-donation-section label {
+    font-weight: bold;
+    display: block;
+    margin: 15px 0 5px;
+}
+
+/* Dropdown and Input Styling */
+.make-donation-section select,
+.make-donation-section input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Charity Radio Buttons (Single Selection) */
+.charity-list {
+    margin-top: 20px;
+}
+
+.charity-list p {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#charityCheckboxes {
+    margin-bottom: 15px;
+}
+
+.charity-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #fff;
+    transition: background 0.2s ease;
+}
+
+.charity-container:hover {
+    background-color: #f1f9ff;
+}
+
+.charity-radio {
+    margin: 0;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+.charity-label {
+    font-size: 16px;
+    color: #2c3e50;
+    cursor: pointer;
+}
+
+/* Donation Summary & Button */
+#amountSection,
+#utilizationSummary {
+    margin-top: 20px;
+}
+
+#utilizationSummary {
+    background-color: #eef9f8;
+    border: 1px solid #b2dfdb;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+#utilizationSummary ul {
+    padding-left: 20px;
+}
+
+button#submitDonationBtn {
+    background: #2ab7ca;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background 0.3s ease;
+}
+
+button#submitDonationBtn:hover {
+    background: #238e9c;
+}
+
+/* Hidden Utility Class */
+.hidden {
+    display: none;
+}
+
+.charity-list,
+#amountSection,
+#utilizationSummary {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.charity-list:not(.hidden),
+#amountSection:not(.hidden),
+#utilizationSummary:not(.hidden) {
+    opacity: 1;
+}
+
+/* Payment Method Section */
+#paymentSection {
+    margin-top: 20px;
+}
+
+#paymentDetails {
+    margin-top: 15px;
+}
+
+/* Input fields for dynamic payment (UPI, Card, Bank) */
+#paymentDetails input[type="text"],
+#paymentDetails input[type="number"],
+#paymentDetails input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+/* Payment status message */
+#paymentStatus {
+    margin-top: 20px;
+    font-weight: bold;
+    color: green;
+}
+
+/* Google Maps InfoWindow styling */
+.gm-style .gm-style-iw {
+    width: 180px !important;
+    max-width: 180px !important;
+    padding: 5px !important;
+    overflow: hidden !important;
+  }
+  
+  /* Title styling inside InfoWindow - larger font */
+  .gm-style .gm-style-iw h3 {
+    font-weight: 600;
+    font-size: 16px !important;       /* Increased font size */
+    margin: 0 0 5px 0;
+    color: #2AB7CA !important;        /* Light blue color */
+    font-family: 'Segoe UI Semibold', Tahoma, Geneva, Verdana, sans-serif !important;
+  }
+  
+  /* Location text styling */
+  .gm-style .gm-style-iw p {
+    margin: 0;
+    font-size: 13px;
+    color: #555;
+  }
+  
+  /* Remove default padding/margin from container div inside InfoWindow */
+  .gm-style .gm-style-iw > div {
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+  
+  /* Adjust the close button for better visibility */
+  .gm-style .gm-style-iw .gm-ui-hover-effect {
+    opacity: 0.8 !important;
+    top: 0 !important;
+    right: 0 !important;
+  }
+  
+  /* Remove bottom padding specifically */
+  .gm-style .gm-style-iw-d {
+    overflow: hidden !important;
+    padding-bottom: 0 !important;
+    padding-top: 0;
+    max-height: none !important;
+  }
+  
+  /* Style the content inside the InfoWindow */
+  .info-window {
+    padding: 0;
+    margin: 0;
+  }
+  .post-card .btn-info {
+    background-color: #17a2b8;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.post-card .btn-info:hover {
+    background-color: #138496;
+}
+
+.post-card img.post-image {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    object-fit: cover;
+  }
+  

@@ -1,0 +1,70 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - HopeHub</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/profile_dropdown.css' %}">
+</head>
+<body>
+    
+    <nav>
+        <div class="nav-logo">
+            <img src="{% static 'images/logo.png' %}" alt="HopeHub Logo">
+            <span>HopeHub</span>
+        </div>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_superuser %}
+                    <li><a href="{% url 'admin_dashboard' %}">Admin Dashboard</a></li>
+                {% else %}
+                    <li><a href="{% url 'user_dashboard' %}">Dashboard</a></li>
+                {% endif %}
+                <li class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </li>
+                {% include 'profile_dropdown.html' %}
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li class="search-bar">
+                    <input type="text" placeholder="Search...">
+                </li>
+            {% endif %}
+        </ul>
+    </nav>
+    
+    
+
+    <div class="main-content">
+        <h1>About HopeHub</h1>
+        <p>HopeHub was born from a deep desire to create a meaningful impact in the world. In a society where countless people struggle for basic needs — food, healthcare, and clothing — we envisioned a platform that could bridge the gap between those willing to help and those in need.</p>
+    
+        <p>Our mission is simple yet powerful: to make giving back easy, transparent, and effective. We believe that even the smallest acts of kindness can create ripples of change. Through HopeHub, we aim to empower individuals and communities by providing them with a secure and trustworthy platform to support causes close to their hearts.</p>
+    
+        <p>The idea behind HopeHub stems from the belief that everyone deserves a helping hand. Whether it's providing a meal to the hungry, helping someone access medical care, or ensuring that no one is left without the warmth of clothing — HopeHub is here to make a difference, one donation at a time.</p>
+    </div>
+    
+    <!-- Hero Section with Image -->
+<div class="container my-5">
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6 d-flex justify-content-center align-items-center">
+            <img src="{% static 'images/new3.jpg' %}" class="d-block img-fluid" alt="HopeHub Impact: A person handing over a food package" width="700" height="500" loading="lazy">
+        </div>
+       
+    </div>
+</div>
+
+
+    
+    <footer>
+        &copy; 2025 HopeHub. All rights reserved.
+    </footer>
+
+    <script src="{% static 'js/profile.js' %}"></script>
+</body>
+</html>
